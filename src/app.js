@@ -15,6 +15,8 @@ import MovieList from './components/pages/moviesList.js'
 const middleware = applyMiddleware(thunk, logger);
 const store = createStore(reducers, middleware);
 
+store.dispatch(itemsFetchData('https://api.themoviedb.org/3/movie/popular?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=${1}'));
+
 render(
 	<Provider store={store}>
 		<MovieList />
@@ -22,4 +24,3 @@ render(
 	document.getElementById('app')
 );
 
-store.dispatch(itemsFetchData('https://api.themoviedb.org/3/movie/popular?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=${1}'));

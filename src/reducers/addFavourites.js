@@ -4,7 +4,7 @@ export const addFavourite = (state={}, action) => {
 	switch(action.type) {
 		case 'ADD_FAVOURITE':
 			return {
-				favourites:[...state.favourites, ...action.payload]
+				favourites:[...state, ...action.payload]
 			}
 	}
 	return state

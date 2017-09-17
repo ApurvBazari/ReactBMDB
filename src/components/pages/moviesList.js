@@ -6,11 +6,10 @@ import MovieCard from '../component/movieCard.js'
 
 class MovieList extends React.Component{
 	render() {
-		console.log(this.props.movies, movielist);
 		let movielist = [];
 		if(this.props.movies) {
 			this.props.movies.map((movie, i) => {
-				movielist.push(<MovieCard movie={movie} />)
+				movielist.push(<MovieCard movie={movie} key={i}/>)
 			});
 		}
 		return (

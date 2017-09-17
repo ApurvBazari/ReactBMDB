@@ -7,7 +7,7 @@ class MovieCard extends React.Component {
 
   render () {
     return (
-      <div className="movieCard" key={this.props.key}>
+      <div className="movieCard">
         <img className="movieImage" alt={this.props.movie.title} src={this.getImage(this.props.movie.poster_path)} />
         <div className="imageTitle">
           <p className="language">{this.props.movie.original_language}</p>

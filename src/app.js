@@ -14,13 +14,13 @@ import {itemsHasErrored, itemsIsLoading, itemsFetchDataSuccess, itemsFetchData} 
 
 import MovieList from './components/pages/moviesList.js'
 import Favourites from './components/pages/favourites.js'
-
+import TvList from './components/pages/tvList.js'
 import Main from './main.js'
 
 const middleware = composeWithDevTools(applyMiddleware(thunk));
 const store = createStore(reducers, middleware);
 
-store.dispatch(itemsFetchData('https://api.themoviedb.org/3/movie/popular?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=${1}'));
+//store.dispatch(itemsFetchData('https://api.themoviedb.org/3/movie/popular?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=${1}'));
 
 const Routes = (
 	<Provider store={store}>
@@ -28,7 +28,7 @@ const Routes = (
 			<Route path="/" component={Main}>
 				<IndexRoute component={MovieList} />
 				<Route path="/movies" component={MovieList} />
-				<Route path="/tv" component={MovieList} />
+				<Route path="/tv" component={TvList} />
 				<Route path="/favourites" component={Favourites} />
 				{/*<Route path="/myaccount" component={} />*/}
 			</Route>

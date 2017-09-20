@@ -2,9 +2,17 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
+import {bindActionCreators} from 'redux'
+
 import MovieCard from '../component/movieCard.js'
+import {itemsFetchData} from '../../actions/fetchItems.js'
 
 class MovieList extends React.Component{
+	componentDidMount = () => {
+		let url = 'https://api.themoviedb.org/3/movie/popular?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=${1}';
+		this.props.itemsFetchData(url);
+	}
+
 	handleLike = (movie) => {
 		console.log('Liked:', movie);
     	let favouriteMovies = localStorage.getItem("favouriteMovies") ? JSON.parse(localStorage.getItem("favouriteMovies")) : [];
@@ -34,4 +42,10 @@ const mapStateToProps = (state) => {
 	}
 }
 
-export default connect(mapStateToProps)(MovieList);
+const mapDispatchToProps = (dispatch) => {
+	return{
+		itemsFetchData: bindActionCreators(itemsFetchData, dispatch)
+	}
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieList);

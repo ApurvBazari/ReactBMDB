@@ -2,7 +2,7 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
-import MovieCard from '../component/movieCard.js'
+import Card from '../component/card.js'
 
 class Favourites extends React.Component{
 	handleDislike = (movieRemove) => {
@@ -26,7 +26,7 @@ class Favourites extends React.Component{
 				<p>Favourite Movies Added</p>
 				{movies.map((movie, i) => {
 					return (
-						<MovieCard movie={movie} key={i} handleLike={this.handleDislike.bind(this)} />
+						<Card data={movie} key={i} handleClick={this.handleDislike.bind(this)} />
 					)					
 				})}
 			</div>

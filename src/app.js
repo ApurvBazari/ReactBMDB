@@ -10,6 +10,7 @@ import reducers from './reducers/index.js'
 import {addFavourite} from './actions/addFavourite.js'
 import {itemsHasErrored, itemsIsLoading, itemsFetchDataSuccess, itemsFetchData} from './actions/fetchItems.js'
 
+import Header from './components/component/header.js'
 import MovieList from './components/pages/moviesList.js'
 
 const middleware = composeWithDevTools(applyMiddleware(thunk));
@@ -19,7 +20,10 @@ store.dispatch(itemsFetchData('https://api.themoviedb.org/3/movie/popular?api_ke
 
 render(
 	<Provider store={store}>
-		<MovieList />
+		<div>
+			<Header />
+			<MovieList />
+		</div>
 	</Provider>,
 	document.getElementById('app')
 );

@@ -21,6 +21,24 @@ class TvList extends React.Component{
     	localStorage.setItem("favouriteMovies", JSON.stringify(favouriteMovies));
   	}
 
+  	handleNavbar = (i) => {
+  		//console.log(i);
+  		let url;
+  		switch(i) {
+  			case 1: url = 'https://api.themoviedb.org/3/tv/popular?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
+  					break;
+  			case 3: url = 'https://api.themoviedb.org/3/tv/top_rated?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
+  					break;
+  			case 4: url = 'https://api.themoviedb.org/3/tv/airing_today?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
+  					break;
+  			case 5: url = 'https://api.themoviedb.org/3/tv/on_the_air?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
+  					break;
+  			default: url = 'https://api.themoviedb.org/3/tv/popular?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
+  					break; 
+  		}
+  		this.props.itemsFetchData(url);
+  	}
+
 	render() {
 		let tvlist = [];
 		if(this.props.tvSeries) {
@@ -30,7 +48,7 @@ class TvList extends React.Component{
 		}
 		return (
 			<div>
-				<Navbar />
+				<Navbar handleSelect={this.handleNavbar.bind(this)} />
 				<h1>Popular TV Series</h1>
 				{tvlist}
 			</div>

@@ -43,8 +43,6 @@ class MovieList extends React.Component{
 		switch(i) {
 			case 1: url = 'https://api.themoviedb.org/3/movie/popular?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
 					break;
-			case 2: url = 'https://api.themoviedb.org/3/movie/latest?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US';
-					break;
 			case 3: url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
 					break;
 			case 4: url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';

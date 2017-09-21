@@ -23,6 +23,8 @@ class Filter extends React.Component{
 			yearList.push(<Radio key={year}>{year}</Radio>)
 		});
 		return (
+			<div className="filterForm">
+			<h1>Select Filter Options</h1>
 			<Form horizontal>
 				<FormGroup name="genreGroup">
 					<Col sm={2}>
@@ -77,6 +79,7 @@ class Filter extends React.Component{
 					</Col>
 				</FormGroup>
 			</Form>
+			</div>
 		)
 	}
 }

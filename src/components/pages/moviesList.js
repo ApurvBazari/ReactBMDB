@@ -7,6 +7,7 @@ import {Button, Grid, Row} from 'react-bootstrap'
 
 import Filter from '../component/filterForm.js'
 import Card from '../component/card.js'
+import Navbar from '../component/navbar.js'
 import {itemsFetchData} from '../../actions/fetchItems.js'
 
 class MovieList extends React.Component{
@@ -37,6 +38,25 @@ class MovieList extends React.Component{
   			})
   	}
 
+  	toggleNavbar = (i) => {
+		let url;
+		switch(i) {
+			case 1: url = 'https://api.themoviedb.org/3/movie/popular?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
+					break;
+			case 2: url = 'https://api.themoviedb.org/3/movie/latest?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US';
+					break;
+			case 3: url = 'https://api.themoviedb.org/3/movie/top_rated?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
+					break;
+			case 4: url = 'https://api.themoviedb.org/3/movie/now_playing?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
+					break;
+			case 5: url = 'https://api.themoviedb.org/3/movie/upcoming?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
+					break;
+			default: url = ''; 
+					break;
+		}
+		this.props.itemsFetchData(url);
+	}
+
 	render() {
 		let filter;
 		if (this.state.filterChecked) {
@@ -52,6 +72,7 @@ class MovieList extends React.Component{
 		}
 		return (
 			<Grid fluid>
+				<Navbar handleSelect={this.toggleNavbar.bind(this)} />
 				<Row>
 					<h1>Popular Movies</h1>
 					<div>{filter}</div>

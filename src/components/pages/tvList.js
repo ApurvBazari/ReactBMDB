@@ -5,6 +5,7 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 import Card from '../component/card.js'
+import Navbar from '../component/navbar.js'
 import {itemsFetchData} from '../../actions/fetchItems.js'
 
 class TvList extends React.Component{
@@ -29,6 +30,7 @@ class TvList extends React.Component{
 		}
 		return (
 			<div>
+				<Navbar />
 				<h1>Popular TV Series</h1>
 				{tvlist}
 			</div>

@@ -20,7 +20,7 @@ class Card extends React.Component {
         <div className="imageHeader">
           <i className="releaseDate">{this.props.data.release_date}</i>
           <div className="icons">
-            <i className="glyphicon glyphicon-heart" aria-hidden="true" onClick={this.addFavourite.bind(this)}></i>
+            <i className="glyphicon glyphicon-heart" aria-hidden="true" onSelect={this.addFavourite.bind(this)}></i>
             <i className="glyphicon glyphicon-comment" aria-hidden="true"></i>
             <i className="glyphicon glyphicon-star" aria-hidden="true"></i>
             <i className="vote_count">{this.props.data.vote_count}</i>

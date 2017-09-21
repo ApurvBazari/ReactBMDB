@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "build": "webpack -d --watch",
+    "dev": "webpack -d --watch --debug --devtool eval-cheap-module-source-map",
     "start": "node server.js"
   },
   "keywords": [],

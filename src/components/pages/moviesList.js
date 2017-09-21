@@ -3,7 +3,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
-import {Button} from 'react-bootstrap'
+import {Button, Grid, Row} from 'react-bootstrap'
 
 import Filter from '../component/filterForm.js'
 import Card from '../component/card.js'
@@ -26,15 +26,21 @@ class MovieList extends React.Component{
   	}
 
   	toggleFilter = () => {
-  		this.setState({
-  			filterChecked: this.state.filterChecked ? false : true 
-  		});
+  		let genreUrl = 'https://api.themoviedb.org/3/genre/movie/list?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US';
+  		let genres = this.props.itemsFetchData(genreUrl)
+  			.then((res) => res.items)
+  			.then((items) => {
+  				this.setState({
+  					filterChecked: this.state.filterChecked ? false : true, 
+  					genres: items.genres
+  				});
+  			})
   	}
 
 	render() {
 		let filter;
 		if (this.state.filterChecked) {
-			filter = <Filter toggleFilter={this.toggleFilter.bind(this)}/>
+			filter = <Filter toggleFilter={this.toggleFilter.bind(this)} genres={this.state.genres} />
 		} else {
 			filter = <Button onClick={this.toggleFilter.bind(this)}>Filter</Button>
 		}
@@ -45,11 +51,13 @@ class MovieList extends React.Component{
 			});
 		}
 		return (
-			<div>
-				<h1>Popular Movies</h1>
-				<div>{filter}</div>
-				<div>{movielist}</div>
-			</div>
+			<Grid fluid>
+				<Row>
+					<h1>Popular Movies</h1>
+					<div>{filter}</div>
+					<div>{movielist}</div>
+				</Row>
+			</Grid>
 		)
 	}
 }

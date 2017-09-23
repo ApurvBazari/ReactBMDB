@@ -79,11 +79,16 @@ class Filter extends React.Component{
 		});
 	}
 
+	filterResults = () => {
+		this.props.filterResults(this.state.genres, this.state.year, this.state.sort);
+		this.toggleFilter();
+	}
+
 	render() {
 		console.log(this.state);
 		let genreList = [];
 		this.props.genres.forEach((genre) => {
-			genreList.push(<Checkbox value={genre.name} key={genre.id} onChange={this.handleGenre.bind(this)}>{genre.name}</Checkbox>)
+			genreList.push(<Checkbox value={genre.id} key={genre.id} onChange={this.handleGenre.bind(this)}>{genre.name}</Checkbox>)
 		});
 		let years = [2017,2016,2015,2014,2013,2012,2011,2010];
 		let yearList = [];
@@ -139,7 +144,7 @@ class Filter extends React.Component{
 				</FormGroup>
 				<FormGroup className="filterButtons">
 					<Col sm={12}>
-					<Button type="submit" bsStyle="primary">Filter Results</Button>
+					<Button type="submit" bsStyle="primary" onClick={this.filterResults.bind(this)}>Filter Results</Button>
 					<Button bsStyle="danger" onClick={this.toggleFilter.bind(this)}>Close Filter</Button>
 					</Col>
 				</FormGroup>

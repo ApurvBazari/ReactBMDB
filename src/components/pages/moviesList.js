@@ -55,10 +55,27 @@ class MovieList extends React.Component{
 		this.props.itemsFetchData(url);
 	}
 
+	filterResults = (genres, year, sort) => {
+		console.log(genres, year, sort);
+		let addGenres, addYear, addSort;
+		if (genres) {
+			addGenres = `&with_genres=${genres}`
+		}
+		if (year) {
+			addYear = `&primary_release_year=${year}`
+		}
+		if (sort) {
+			addSort = `&sort_by=${sort}`
+		}
+		let url = `https://api.themoviedb.org/3/discover/movie?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US${addGenres ? addGenres : ''}${addYear ? addYear : ''}${addSort ? addSort : ''}`;
+		console.log(url);
+		this.props.itemsFetchData(url);
+	}
+
 	render() {
 		let filter;
 		if (this.state.filterChecked) {
-			filter = <Filter toggleFilter={this.toggleFilter.bind(this)} genres={this.state.genres} />
+			filter = <Filter toggleFilter={this.toggleFilter.bind(this)} genres={this.state.genres} filterResults={this.filterResults.bind(this)}/>
 		} else {
 			filter = <Button onClick={this.toggleFilter.bind(this)}>Filter</Button>
 		}

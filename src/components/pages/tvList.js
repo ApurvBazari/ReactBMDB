@@ -39,11 +39,28 @@ class TvList extends React.Component{
   		this.props.itemsFetchData(url);
   	}
 
+  	filterResults = (genres, year, sort) => {
+		console.log(genres, year, sort);
+		let addGenres, addYear, addSort;
+		if (genres) {
+			addGenres = `&with_genres=${genres}`
+		}
+		if (year) {
+			addYear = `&first_air_date_year=${year}`
+		}
+		if (sort) {
+			addSort = `&sort_by=${sort}`
+		}
+		let url = `https://api.themoviedb.org/3/discover/movie?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US${addGenres ? addGenres : ''}${addYear ? addYear : ''}${addSort ? addSort : ''}`;
+		console.log(url);
+		this.props.itemsFetchData(url);
+	}
+
 	render() {
 		let tvlist = [];
 		if(this.props.tvSeries) {
 			this.props.tvSeries.map((tv, i) => {
-				tvlist.push(<Card data={tv} key={i} handleClick={this.handleLike.bind(this)}/>)
+				tvlist.push(<Card data={tv} key={i} handleClick={this.handleLike.bind(this)} filterResults ={this.filterResults.bind(this)}/>)
 			});
 		}
 		return (

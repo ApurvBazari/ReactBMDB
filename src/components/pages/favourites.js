@@ -3,6 +3,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Card from '../component/card.js'
+import {Button, Grid, Row} from 'react-bootstrap'
 
 class Favourites extends React.Component{
 	handleDislike = (movieRemove) => {
@@ -22,14 +23,16 @@ class Favourites extends React.Component{
 	render() {
 		let movies = localStorage.getItem("favouriteMovies") ? JSON.parse(localStorage.getItem("favouriteMovies")) : [];
 		return(
-			<div>
-				<p>Favourite Movies Added</p>
+			<Grid>
+				<Row>
+					<p><h1>Favourite Movies Added</h1></p>
 				{movies.map((movie, i) => {
 					return (
 						<Card data={movie} key={i} handleClick={this.handleDislike.bind(this)} />
 					)					
 				})}
-			</div>
+				</Row>
+			</Grid>
 		)
 	}
 }

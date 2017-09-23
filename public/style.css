@@ -1,3 +1,7 @@
+:global {
+    @import "~/react-select/dist/react-select.css";
+}
+
 .movieCard {
     display: block;
     margin: 10px;

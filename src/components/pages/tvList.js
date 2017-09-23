@@ -66,7 +66,6 @@ class TvList extends React.Component{
 		return (
 			<div>
 				<Navbar handleSelect={this.handleNavbar.bind(this)} />
-				<h1>Popular TV Series</h1>
 				{tvlist}
 			</div>
 		)

@@ -89,7 +89,6 @@ class MovieList extends React.Component{
 			<Grid fluid>
 				<Navbar handleSelect={this.toggleNavbar.bind(this)} />
 				<Row>
-					<h1>Popular Movies</h1>
 					<div>{filter}</div>
 					<div>{movielist}</div>
 				</Row>

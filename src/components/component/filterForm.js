@@ -2,13 +2,15 @@
 
 import React from 'react'
 import {Radio, MenuItem, Form, FormGroup, Col, FormControl, Button, Checkbox, Row, ControlLabel, DropdownButton} from 'react-bootstrap'
+import Select from 'react-select'
 
 class Filter extends React.Component{
 	componentWillMount = () => {
 		this.setState({
 			genres: [],
 			year: null,
-			sort: null
+			sort: null,
+			sortValue: null
 		});
 	}
 
@@ -50,7 +52,7 @@ class Filter extends React.Component{
 	handleSort = (selectedKey) => {
 		console.log(selectedKey);
 		let sort;
-		switch(selectedKey) {
+		switch(selectedKey.value) {
 			case 1: sort = 'popularity.asc';
 					break;
 			case 2: sort = 'popularity.desc';
@@ -75,7 +77,8 @@ class Filter extends React.Component{
 					break;
 		}
 		this.setState({
-			sort: sort
+			sort: sort,
+			sortValue: selectedKey.value
 		});
 	}
 
@@ -90,11 +93,26 @@ class Filter extends React.Component{
 		this.props.genres.forEach((genre) => {
 			genreList.push(<Checkbox value={genre.id} key={genre.id} onChange={this.handleGenre.bind(this)}>{genre.name}</Checkbox>)
 		});
+		
 		let years = [2017,2016,2015,2014,2013,2012,2011,2010];
 		let yearList = [];
 		years.forEach((year) => {
 			yearList.push(<Radio name='yearFilter' value={year} key={year} onChange={this.handleYear.bind(this)}>{year}</Radio>)
 		});
+		
+		let options = [
+			{value: 1, label: 'Popularity: High to Low'},
+			{value: 2, label: 'Popularity: Low to High'},
+			{value: 3, label: 'Release date: High to Low'},
+			{value: 4, label: 'Release date: Low to High'},
+			{value: 5, label: 'Revenue: High to Low'},
+			{value: 6, label: 'Revenue: Low to High'},
+			{value: 7, label: 'Vote Average: High to Low'},
+			{value: 8, label: 'Vote Average: Low to High'},
+			{value: 9, label: 'Vote Count: High to Low'},
+			{value: 10, label: 'Vote Count: Low to High'}
+		];
+
 		return (
 			<div>
 			<h1>Select Filter Options</h1>
@@ -125,22 +143,9 @@ class Filter extends React.Component{
 							Sort by
 						</ControlLabel>
 					</Col>
-					<DropdownButton bsStyle='default' title='Sort by' id='sortByFilter' onSelect={this.handleSort.bind(this)}>
-						<MenuItem eventKey={1}>Popularity: High to Low</MenuItem>
-						<MenuItem eventKey={2}>Popularity: Low to Highgh</MenuItem>
-						<MenuItem divider />
-						<MenuItem eventKey={3}>Release date: High to Low</MenuItem>
-						<MenuItem eventKey={4}>Release date: Low to High</MenuItem>
-						<MenuItem divider />
-						<MenuItem eventKey={5}>Revenue: High to Low</MenuItem>
-						<MenuItem eventKey={6}>Revenue: Low to High</MenuItem>
-						<MenuItem divider />
-						<MenuItem eventKey={7}>Vote Average: High to Low</MenuItem>
-						<MenuItem eventKey={8}>Vote Average: Low to High</MenuItem>
-						<MenuItem divider />
-						<MenuItem eventKey={9}>Vote Count: High to Low</MenuItem>
-						<MenuItem eventKey={10}>Vote Count: Low to High</MenuItem>
-					</DropdownButton>
+					<Col sm={10}>
+						<Select placeholder="Sort by" name="sortSelect" value={this.state.sortValue} options={options} onChange={this.handleSort.bind(this)}/>
+					</Col>
 				</FormGroup>
 				<FormGroup className="filterButtons">
 					<Col sm={12}>

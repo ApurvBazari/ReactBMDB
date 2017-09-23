@@ -73,8 +73,14 @@
 
 .checkbox {
   padding: 10px;
+  display: inline-block;
 }
 
 .filterButtons {
     padding: 10px;
+}
+
+.yearFilter {
+    padding: 10px;
+    display: inline-block;
 }

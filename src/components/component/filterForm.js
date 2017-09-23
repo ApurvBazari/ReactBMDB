@@ -91,13 +91,13 @@ class Filter extends React.Component{
 		console.log(this.state);
 		let genreList = [];
 		this.props.genres.forEach((genre) => {
-			genreList.push(<Checkbox value={genre.id} key={genre.id} onChange={this.handleGenre.bind(this)}>{genre.name}</Checkbox>)
+			genreList.push(<Checkbox className="checkbox" value={genre.id} key={genre.id} onChange={this.handleGenre.bind(this)}>{genre.name}</Checkbox>)
 		});
 		
 		let years = [2017,2016,2015,2014,2013,2012,2011,2010];
 		let yearList = [];
 		years.forEach((year) => {
-			yearList.push(<Radio name='yearFilter' value={year} key={year} onChange={this.handleYear.bind(this)}>{year}</Radio>)
+			yearList.push(<Radio className='yearFilter' value={year} key={year} onChange={this.handleYear.bind(this)}>{year}</Radio>)
 		});
 		
 		let options = [

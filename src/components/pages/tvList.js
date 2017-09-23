@@ -3,15 +3,20 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
+import {Button, Grid, Row} from 'react-bootstrap'
 
 import Card from '../component/card.js'
 import Navbar from '../component/navbar.js'
 import {itemsFetchData} from '../../actions/fetchItems.js'
+import {Filter} from '../component/filterForm.js'
 
 class TvList extends React.Component{
 	componentWillMount = () => {
 		let url = 'https://api.themoviedb.org/3/tv/popular?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1';
 		this.props.itemsFetchData(url);
+		this.setState({
+			filterChecked: false
+		})
 	}
 
 	handleLike = (movie) => {
@@ -56,18 +61,39 @@ class TvList extends React.Component{
 		this.props.itemsFetchData(url);
 	}
 
+	toggleFilter = () => {
+  		let genreUrl = 'https://api.themoviedb.org/3/genre/tv/list?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US';
+  		let genres = this.props.itemsFetchData(genreUrl)
+  			.then((res) => res.items)
+  			.then((items) => {
+  				this.setState({
+  					filterChecked: this.state.filterChecked ? false : true, 
+  					genres: items.genres
+  				});
+  			})
+  	}
+
 	render() {
 		let tvlist = [];
+		let filter;
+		if (this.state.filterChecked) {
+			filter = <Filter toggleFilter={this.toggleFilter.bind(this)} genres={this.state.genres} filterResults={this.filterResults.bind(this)}/>
+		} else {
+			filter = <Button onClick={this.toggleFilter.bind(this)}>Filter</Button>
+		}
 		if(this.props.tvSeries) {
 			this.props.tvSeries.map((tv, i) => {
 				tvlist.push(<Card data={tv} key={i} handleClick={this.handleLike.bind(this)} filterResults ={this.filterResults.bind(this)}/>)
 			});
 		}
 		return (
-			<div>
+			<Grid>
 				<Navbar handleSelect={this.handleNavbar.bind(this)} />
-				{tvlist}
-			</div>
+				<Row>
+					{filter}
+					{tvlist}
+				</Row>
+			</Grid>
 		)
 	}
 }

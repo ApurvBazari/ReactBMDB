@@ -111,6 +111,15 @@
     background: beige;
 }
 
+.filterButtons {
+    display: flex;
+    justify-content: center;
+}
+
 .nav-tabs {
     background: antiquewhite;
+}
+
+.btn {
+    margin: 5px;
 }

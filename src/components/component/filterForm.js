@@ -148,10 +148,8 @@ class Filter extends React.Component{
 					</Col>
 				</FormGroup>
 				<FormGroup className="filterButtons">
-					<Col sm={12}>
-					<Button type="submit" bsStyle="primary" onClick={this.filterResults.bind(this)}>Filter Results</Button>
-					<Button bsStyle="danger" onClick={this.toggleFilter.bind(this)}>Close Filter</Button>
-					</Col>
+					<Button bsStyle="danger" onClick={this.toggleFilter.bind(this)}>Cancel</Button>
+					<Button type="submit" bsStyle="primary" onClick={this.filterResults.bind(this)}>Search</Button>
 				</FormGroup>
 			</Form>
 			</div>

@@ -1,19 +1,24 @@
 'use strict'
 
 import React from 'react'
-import Header from './components/component/header.js'
-import Footer from './components/component/footer.js'
+import {Switch, Route} from 'react-router-dom'
 
-class Main extends React.Component{
+import MovieList from './components/pages/moviesList.js'
+import Favourites from './components/pages/favourites.js'
+import TvList from './components/pages/tvList.js'
+//import Profile from './components/pages/profilePage.js'
+class Main extends React.Component {
 	render() {
-		return (
-			<div>
-				<Header />
-					{this.props.children}
-				<Footer />
-			</div>
-		)
-	}
+	return (
+	<main>
+		<Switch>
+			<Route path="/movies" component={MovieList} />
+			<Route path="/tv" component={TvList} />
+			<Route path="/watchlist" component={Favourites} />
+		</Switch>
+	</main>
+	)
+}
 }
 
 export default Main;

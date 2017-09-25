@@ -43,7 +43,7 @@ class Card extends React.Component {
     }
     return (
       <div className="movieCard">
-        <img className="movieImage" href="/details" alt={this.props.data.title ? this.props.data.title : this.props.data.name} src={this.getImage(this.props.data.poster_path)} onClick={this.getDetails.bind(this)}/>
+        <img href="/details" className="movieImage" href="/details" alt={this.props.data.title ? this.props.data.title : this.props.data.name} src={this.getImage(this.props.data.poster_path)} onClick={this.getDetails.bind(this)}/>
         <div className="imageTitle">
           <p className="language">{this.props.data.original_language}</p>
           <p className="title">{this.props.data.title ? this.props.data.title : this.props.data.name}</p>

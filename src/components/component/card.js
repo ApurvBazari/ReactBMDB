@@ -1,5 +1,6 @@
 import React from 'react'
 import {Tooltip, OverlayTrigger} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 class Card extends React.Component {
   componentWillMount = () => {
@@ -26,8 +27,9 @@ class Card extends React.Component {
     this.props.handleClick(this.props.data);
   }
 
-  getDetails = () => {
-    console.log('Img Clicked');
+  getDetails = (e) => {
+    e.preventDefault();
+    console.log('Img Clicked', this);
   }
 
   render () {
@@ -43,7 +45,9 @@ class Card extends React.Component {
     }
     return (
       <div className="movieCard">
-        <img href="/details" className="movieImage" href="/details" alt={this.props.data.title ? this.props.data.title : this.props.data.name} src={this.getImage(this.props.data.poster_path)} onClick={this.getDetails.bind(this)}/>
+        <Link to={`/details`}>
+          <img href="/details" className="movieImage" href="/details" alt={this.props.data.title ? this.props.data.title : this.props.data.name} src={this.getImage(this.props.data.poster_path)} onClick={this.getDetails.bind(this)}/>
+        </Link>
         <div className="imageTitle">
           <p className="language">{this.props.data.original_language}</p>
           <p className="title">{this.props.data.title ? this.props.data.title : this.props.data.name}</p>

@@ -39,10 +39,10 @@ class Card extends React.Component {
     }
     return (
       <div className="movieCard">
-        <img className="movieImage" alt={this.props.data.title} src={this.getImage(this.props.data.poster_path)} />
+        <img className="movieImage" alt={this.props.data.title ? this.props.data.title : this.props.data.name} src={this.getImage(this.props.data.poster_path)} />
         <div className="imageTitle">
           <p className="language">{this.props.data.original_language}</p>
-          <p className="title">{this.props.data.title}</p>
+          <p className="title">{this.props.data.title ? this.props.data.title : this.props.data.name}</p>
         </div>
         <div className="imageHeader">
           <i className="releaseDate">{this.props.data.release_date}</i>

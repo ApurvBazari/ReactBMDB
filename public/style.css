@@ -52,6 +52,10 @@
     transform: scale(1.2);
 }
 
+.glyphicon-heart-liked {
+    color: red;
+}
+
 .releaseDate {
     position: absolute;
     top: 0px;

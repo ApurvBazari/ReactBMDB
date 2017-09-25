@@ -2,18 +2,41 @@ import React from 'react'
 import {Tooltip, OverlayTrigger} from 'react-bootstrap'
 
 class Card extends React.Component {
+  componentWillMount = () => {
+    let favouriteMovies = localStorage.getItem("favouriteMovies") ? JSON.parse(localStorage.getItem("favouriteMovies")) : [];
+    let flag = false;
+    favouriteMovies.forEach((favourite) => {
+      if (favourite.id === this.props.data.id) {
+        flag = true;
+      }
+    });
+    this.setState({
+      isFavourite: flag
+    })
+  }
+
   getImage = (imagePath) => {
     return `https://image.tmdb.org/t/p/w300${imagePath}`;
   }
 
   addFavourite = () => {
+    this.setState({
+      isFavourite: !this.state.isFavourite
+    });
     this.props.handleClick(this.props.data);
   }
 
   render () {
-    const tooltip = (
-      <Tooltip id="tooltip"><strong>Add Favourites</strong></Tooltip>
-    )
+    let tooltip;
+    if (this.state.isFavourite) {
+      tooltip = (
+        <Tooltip id="tooltip"><strong>Remove from Favourites</strong></Tooltip>
+      )
+    } else {
+      tooltip = (
+        <Tooltip id="tooltip"><strong>Add to Favourites</strong></Tooltip>
+      )
+    }
     return (
       <div className="movieCard">
         <img className="movieImage" alt={this.props.data.title} src={this.getImage(this.props.data.poster_path)} />
@@ -25,7 +48,7 @@ class Card extends React.Component {
           <i className="releaseDate">{this.props.data.release_date}</i>
           <div className="icons">
             <OverlayTrigger placement="bottom" overlay={tooltip}>
-              <i className="glyphicon glyphicon-heart" aria-hidden="true" onClick={this.addFavourite.bind(this)}></i>
+              <i className={this.state.isFavourite ? 'glyphicon glyphicon-heart glyphicon-heart-liked' : 'glyphicon glyphicon-heart'} aria-hidden="true" onClick={this.addFavourite.bind(this)}></i>
             </OverlayTrigger>
             <i className="glyphicon glyphicon-comment" aria-hidden="true"></i>
             <i className="glyphicon glyphicon-star" aria-hidden="true"></i>

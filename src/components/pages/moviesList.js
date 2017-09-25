@@ -7,7 +7,7 @@ import {Button, Grid, Row} from 'react-bootstrap'
 
 import Filter from '../component/filterForm.js'
 import Card from '../component/card.js'
-import Navbar from '../component/navbar.js'
+import Navigationbar from '../component/navbar.js'
 import {itemsFetchData} from '../../actions/fetchItems.js'
 
 class MovieList extends React.Component{
@@ -97,7 +97,7 @@ class MovieList extends React.Component{
 		}
 		return (
 			<Grid fluid>
-				<Navbar className="navHeader" handleSelect={this.toggleNavbar.bind(this)} />
+				<Navigationbar className="navHeader" handleSelect={this.toggleNavbar.bind(this)} />
 				<Row>
 					<div className="filterClass">{filter}</div>
 					<div className="list">{movielist}</div>

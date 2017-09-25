@@ -1,4 +1,5 @@
 import React from 'react'
+import {Tooltip, OverlayTrigger} from 'react-bootstrap'
 
 class Card extends React.Component {
   getImage = (imagePath) => {
@@ -10,6 +11,9 @@ class Card extends React.Component {
   }
 
   render () {
+    const tooltip = (
+      <Tooltip id="tooltip"><strong>Add Favourites</strong></Tooltip>
+    )
     return (
       <div className="movieCard">
         <img className="movieImage" alt={this.props.data.title} src={this.getImage(this.props.data.poster_path)} />
@@ -20,7 +24,9 @@ class Card extends React.Component {
         <div className="imageHeader">
           <i className="releaseDate">{this.props.data.release_date}</i>
           <div className="icons">
-            <i className="glyphicon glyphicon-heart" aria-hidden="true" onClick={this.addFavourite.bind(this)}></i>
+            <OverlayTrigger placement="bottom" overlay={tooltip}>
+              <i className="glyphicon glyphicon-heart" aria-hidden="true" onClick={this.addFavourite.bind(this)}></i>
+            </OverlayTrigger>
             <i className="glyphicon glyphicon-comment" aria-hidden="true"></i>
             <i className="glyphicon glyphicon-star" aria-hidden="true"></i>
             <i className="vote_count">{this.props.data.vote_count}</i>

@@ -6,7 +6,7 @@ import {bindActionCreators} from 'redux'
 import {Button, Grid, Row} from 'react-bootstrap'
 
 import Card from '../component/card.js'
-import Navbar from '../component/navbar.js'
+import Navigationbar from '../component/navbar.js'
 import {itemsFetchData} from '../../actions/fetchItems.js'
 import Filter from '../component/filterForm.js'
 
@@ -98,7 +98,7 @@ class TvList extends React.Component{
 		}
 		return (
 			<Grid fluid>
-				<Navbar className="navHeader" handleSelect={this.handleNavbar.bind(this)} />
+				<Navigationbar className="navHeader" handleSelect={this.handleNavbar.bind(this)} />
 				<Row>
 					<div className="filterClass">{filter}</div>
 					<div className="list">{tvlist}</div>

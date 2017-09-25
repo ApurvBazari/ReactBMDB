@@ -30,7 +30,7 @@ const Routes = (
 				<IndexRoute component={MovieList} />
 				<Route path="/movies" component={MovieList} />
 				<Route path="/tv" component={TvList} />
-				<Route path="/favourites" component={Favourites} />
+				<Route path="/watchlist" component={Favourites} />
 				<Route path="/details" component={Profile} />
 			</Route>
 		</Router>

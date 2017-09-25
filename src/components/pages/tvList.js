@@ -88,10 +88,10 @@ class TvList extends React.Component{
 		}
 		return (
 			<Grid fluid>
-				<Navbar handleSelect={this.handleNavbar.bind(this)} />
+				<Navbar className="navHeader" handleSelect={this.handleNavbar.bind(this)} />
 				<Row>
 					<div className="filterClass">{filter}</div>
-					<div>{tvlist}</div>
+					<div className="list">{tvlist}</div>
 				</Row>
 			</Grid>
 		)

@@ -23,7 +23,7 @@ class Favourites extends React.Component{
 	render() {
 		let movies = localStorage.getItem("favouriteMovies") ? JSON.parse(localStorage.getItem("favouriteMovies")) : [];
 		return(
-			<Grid>
+			<Grid fluid>
 				<Row>
 					<p><h1>Favourite Movies Added</h1></p>
 				{movies.map((movie, i) => {

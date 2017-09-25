@@ -87,10 +87,10 @@ class MovieList extends React.Component{
 		}
 		return (
 			<Grid fluid>
-				<Navbar handleSelect={this.toggleNavbar.bind(this)} />
+				<Navbar className="navHeader" handleSelect={this.toggleNavbar.bind(this)} />
 				<Row>
 					<div className="filterClass">{filter}</div>
-					<div>{movielist}</div>
+					<div className="list">{movielist}</div>
 				</Row>
 			</Grid>
 		)

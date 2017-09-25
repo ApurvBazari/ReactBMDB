@@ -3,13 +3,15 @@
 }
 
 .movieCard {
-    display: block;
     margin: 10px;
     border: 1px solid #ccc;
     float: left;
     width: 301px;
     height: 345px;
     position: relative;
+    -webkit-transition: -webkit-transform 0.5s ease;
+    -moz-transition: -moz-transform 0.5s ease;
+    transition: transform 0.5s ease;
 }
 
 .movieImage {
@@ -20,6 +22,9 @@
 
 .movieCard:hover {
     border: 1px solid #777;
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    transform: scale(1.2);
+    z-index: 1;
 }
 
 .imageTitle {
@@ -41,6 +46,12 @@
     color: white;
 }
 
+.glyphicon-heart:hover {
+    border: 1px solid #777;
+    box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+    transform: scale(1.2);
+}
+
 .releaseDate {
     position: absolute;
     top: 0px;
@@ -51,6 +62,9 @@
 
 .glyphicon {
     padding: 3px;
+    -webkit-transition: -webkit-transform 0.5s ease;
+    -moz-transition: -moz-transform 0.5s ease;
+    transition: transform 0.5s ease;
 }
 
 .fa>fa-heart>fa-heart-like {
@@ -87,4 +101,12 @@
 
 .filterClass {
     padding: 20px;
+}
+
+.filterForm {
+    background: beige;
+}
+
+.nav-tabs {
+    background: antiquewhite;
 }

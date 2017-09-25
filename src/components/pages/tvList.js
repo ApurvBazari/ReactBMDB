@@ -20,10 +20,20 @@ class TvList extends React.Component{
 	}
 
 	handleLike = (movie) => {
-		console.log('Liked:', movie);
-    	let favouriteMovies = localStorage.getItem("favouriteMovies") ? JSON.parse(localStorage.getItem("favouriteMovies")) : [];
-    	favouriteMovies[favouriteMovies ? favouriteMovies.length : 0] = movie;
-    	localStorage.setItem("favouriteMovies", JSON.stringify(favouriteMovies));
+		let newList = [];
+		let flag = false;
+		let favouriteMovies = localStorage.getItem("favouriteMovies") ? JSON.parse(localStorage.getItem("favouriteMovies")) : [];
+    	favouriteMovies.forEach((favourite) => {
+    		if (favourite.id != movie.id) {
+    			newList.push(favourite)
+    		} else {
+    			flag = true;
+    		}
+    	});
+    	if (!flag) {
+    		newList.push(movie)
+    	}
+    	localStorage.setItem("favouriteMovies", JSON.stringify(newList));
   	}
 
   	handleNavbar = (i) => {

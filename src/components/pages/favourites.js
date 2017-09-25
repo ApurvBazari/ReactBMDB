@@ -25,7 +25,7 @@ class Favourites extends React.Component{
 		return(
 			<Grid fluid>
 				<Row>
-					<p><h1>Favourite Movies Added</h1></p>
+					<h1><p>Favourite Movies Added</p></h1>
 				{movies.map((movie, i) => {
 					return (
 						<Card data={movie} key={i} handleClick={this.handleDislike.bind(this)} />

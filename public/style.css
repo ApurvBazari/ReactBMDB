@@ -18,6 +18,7 @@
     position: relative;
     width: 100%;
     height: 100%;
+    cursor: hand;
 }
 
 .movieCard:hover {
@@ -50,6 +51,10 @@
     border: 1px solid #777;
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
     transform: scale(1.2);
+}
+
+.glyphicon-heart {
+    cursor: hand
 }
 
 .glyphicon-heart-liked {

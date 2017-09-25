@@ -15,6 +15,7 @@ import {itemsHasErrored, itemsIsLoading, itemsFetchDataSuccess, itemsFetchData} 
 import MovieList from './components/pages/moviesList.js'
 import Favourites from './components/pages/favourites.js'
 import TvList from './components/pages/tvList.js'
+import Profile from './components/pages/profilePage.js'
 import Main from './main.js'
 
 const middleware = composeWithDevTools(applyMiddleware(thunk));
@@ -30,7 +31,7 @@ const Routes = (
 				<Route path="/movies" component={MovieList} />
 				<Route path="/tv" component={TvList} />
 				<Route path="/favourites" component={Favourites} />
-				{/*<Route path="/myaccount" component={} />*/}
+				<Route path="/details" component={Profile} />
 			</Route>
 		</Router>
 	</Provider>

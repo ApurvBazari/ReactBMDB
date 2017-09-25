@@ -19,7 +19,7 @@ class Header extends React.Component{
         				<NavItem eventKey={1} href="/tv">Tv Series</NavItem>
       				</Nav>
       				<Nav pullRight>
-        				<NavItem eventKey={1} href="/favourites">My Favourites</NavItem>
+        				<NavItem eventKey={1} href="/watchlist">My Watchlist</NavItem>
         				<NavItem eventKey={2} href="/myaccount">My Account</NavItem>
       				</Nav>
     			</Navbar.Collapse>

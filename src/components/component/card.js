@@ -34,11 +34,11 @@ class Card extends React.Component {
     let tooltip;
     if (this.state.isFavourite) {
       tooltip = (
-        <Tooltip id="tooltip"><strong>Remove from Favourites</strong></Tooltip>
+        <Tooltip id="tooltip"><strong>Remove from Watchlist</strong></Tooltip>
       )
     } else {
       tooltip = (
-        <Tooltip id="tooltip"><strong>Add to Favourites</strong></Tooltip>
+        <Tooltip id="tooltip"><strong>Add to Watchlist</strong></Tooltip>
       )
     }
     return (
@@ -52,7 +52,7 @@ class Card extends React.Component {
           <i className="releaseDate">{this.props.data.release_date}</i>
           <div className="icons">
             <OverlayTrigger placement="bottom" overlay={tooltip}>
-              <i className={this.state.isFavourite ? 'glyphicon glyphicon-heart glyphicon-heart-liked' : 'glyphicon glyphicon-heart'} aria-hidden="true" onClick={this.addFavourite.bind(this)}></i>
+              <i className={this.state.isFavourite ? 'glyphicon glyphicon-eye-open' : 'glyphicon glyphicon-eye-close'} aria-hidden="true" onClick={this.addFavourite.bind(this)}></i>
             </OverlayTrigger>
             <i className="glyphicon glyphicon-comment" aria-hidden="true"></i>
             <i className="glyphicon glyphicon-star" aria-hidden="true"></i>

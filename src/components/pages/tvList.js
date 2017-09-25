@@ -8,7 +8,7 @@ import {Button, Grid, Row} from 'react-bootstrap'
 import Card from '../component/card.js'
 import Navbar from '../component/navbar.js'
 import {itemsFetchData} from '../../actions/fetchItems.js'
-import {Filter} from '../component/filterForm.js'
+import Filter from '../component/filterForm.js'
 
 class TvList extends React.Component{
 	componentWillMount = () => {
@@ -56,7 +56,7 @@ class TvList extends React.Component{
 		if (sort) {
 			addSort = `&sort_by=${sort}`
 		}
-		let url = `https://api.themoviedb.org/3/discover/movie?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US${addGenres ? addGenres : ''}${addYear ? addYear : ''}${addSort ? addSort : ''}`;
+		let url = `https://api.themoviedb.org/3/discover/tv?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US${addGenres ? addGenres : ''}${addYear ? addYear : ''}${addSort ? addSort : ''}`;
 		console.log(url);
 		this.props.itemsFetchData(url);
 	}
@@ -87,11 +87,11 @@ class TvList extends React.Component{
 			});
 		}
 		return (
-			<Grid>
+			<Grid fluid>
 				<Navbar handleSelect={this.handleNavbar.bind(this)} />
 				<Row>
-					{filter}
-					{tvlist}
+					<div className="filterClass">{filter}</div>
+					<div>{tvlist}</div>
 				</Row>
 			</Grid>
 		)

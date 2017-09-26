@@ -97,7 +97,7 @@ class MovieList extends React.Component{
 		}
 		return (
 			<Grid fluid>
-				<Navigationbar className="navHeader" handleSelect={this.toggleNavbar.bind(this)} />
+				<Navigationbar className="navHeader" handleSelect={this.toggleNavbar.bind(this)} type="movie"/>
 				<Row>
 					<div className="filterClass">{filter}</div>
 					<div className="list">{movielist}</div>

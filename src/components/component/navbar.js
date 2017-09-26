@@ -2,6 +2,7 @@
 
 import React from 'react'
 import {Nav, NavItem, Navbar} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 class Navigationbar extends React.Component{
 	componentWillMount = () => {
@@ -42,7 +43,9 @@ class Navigationbar extends React.Component{
 			search = (
 				<div>
 					<input type="text" placeholder="Search.." onChange={this.handleInput.bind(this)}/>
-					<i className="glyphicon glyphicon-ok" onClick={this.handleSearch.bind(this)}></i>
+					<Link to={`/${this.props.type}/search/searchTerm=${this.state.searchTerm}`}>
+						<i className="glyphicon glyphicon-ok"></i>
+					</Link>
 					<i className="glyphicon glyphicon-remove" onClick={this.toggleSearch.bind(this)}></i>
 				</div>
 			);

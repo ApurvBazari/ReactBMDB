@@ -7,6 +7,7 @@ import MovieList from './components/pages/moviesList.js'
 import Favourites from './components/pages/favourites.js'
 import TvList from './components/pages/tvList.js'
 import Profile from './components/pages/profilePage.js'
+import SearchResults from './components/pages/searchList.js'
 
 class Main extends React.Component {
 	render() {
@@ -14,9 +15,10 @@ class Main extends React.Component {
 	<main>
 		<Switch>
 			<Route path="/movies" component={MovieList} />
-			<Route path="/tv" component={TvList} />
+			<Route path="/tvseries" component={TvList} />
 			<Route path="/watchlist" component={Favourites} />
-			<Route path="/details" component={Profile} />
+			<Route path="/:type/details/id=:valueId" component={Profile} />
+			<Route path="/:type/search/searchTerm=:value" component={SearchResults} />
 		</Switch>
 	</main>
 	)

@@ -27,11 +27,6 @@ class Card extends React.Component {
     this.props.handleClick(this.props.data);
   }
 
-  getDetails = (e) => {
-    e.preventDefault();
-    console.log('Img Clicked', this);
-  }
-
   render () {
     let tooltip;
     if (this.state.isFavourite) {
@@ -45,8 +40,8 @@ class Card extends React.Component {
     }
     return (
       <div className="movieCard">
-        <Link to={`/details`}>
-          <img href="/details" className="movieImage" href="/details" alt={this.props.data.title ? this.props.data.title : this.props.data.name} src={this.getImage(this.props.data.poster_path)} onClick={this.getDetails.bind(this)}/>
+        <Link to={`/${this.props.data.title ? 'movie': 'tv'}/details/id=${this.props.data.id}`}>
+          <img className="movieImage" alt={this.props.data.title ? this.props.data.title : this.props.data.name} src={this.getImage(this.props.data.poster_path)} />
         </Link>
         <div className="imageTitle">
           <p className="language">{this.props.data.original_language}</p>

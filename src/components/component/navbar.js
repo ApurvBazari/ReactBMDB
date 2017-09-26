@@ -42,7 +42,7 @@ class Navigationbar extends React.Component{
 		if (this.state.isSearch) {
 			search = (
 				<div>
-					<input type="text" placeholder="Search.." onChange={this.handleInput.bind(this)}/>
+					<input className="searchInput" type="text" placeholder={`Search for ${this.props.type}..`} onChange={this.handleInput.bind(this)}/>
 					<Link to={`/${this.props.type}/search/searchTerm=${this.state.searchTerm}`}>
 						<i className="glyphicon glyphicon-ok"></i>
 					</Link>

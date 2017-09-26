@@ -28,7 +28,7 @@ class SearchResults extends React.Component {
 			list.push(<Card data={profile} key={i} handleClick={this.handleLike.bind(this)}/>)			
 		})
 		return (
-			<Grid>
+			<Grid fluid>
 				<Row>
 					<div className="searchHeader">{this.props.match.params.type} results for term: {this.props.match.params.value}</div>
 					<div className="searchList">{list}</div>

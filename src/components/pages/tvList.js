@@ -98,7 +98,7 @@ class TvList extends React.Component{
 		}
 		return (
 			<Grid fluid>
-				<Navigationbar className="navHeader" handleSelect={this.handleNavbar.bind(this)} />
+				<Navigationbar className="navHeader" handleSelect={this.handleNavbar.bind(this)} type="tv"/>
 				<Row>
 					<div className="filterClass">{filter}</div>
 					<div className="list">{tvlist}</div>

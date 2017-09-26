@@ -55,10 +55,10 @@ class Navigationbar extends React.Component{
 		return(
 			<Navbar fluid>
 			<Nav bsStyle="tabs" activeKey={this.state.activeKey} onSelect={this.handleSelect.bind(this)}>
-				<NavItem eventKey={1}>Popular</NavItem>
-				<NavItem eventKey={3}>Top Rated</NavItem>
-				<NavItem eventKey={4}>Now Playing</NavItem>
-				<NavItem eventKey={5}>Upcoming</NavItem>
+				<NavItem className="navItem" eventKey={1}>Popular</NavItem>
+				<NavItem className="navItem" eventKey={3}>Top Rated</NavItem>
+				<NavItem className="navItem" eventKey={4}>Now Playing</NavItem>
+				<NavItem className="navItem" eventKey={5}>Upcoming</NavItem>
 			</Nav>
 			<Nav pullRight>
 				<NavItem>{search}</NavItem>

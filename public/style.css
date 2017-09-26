@@ -127,6 +127,11 @@
     background: antiquewhite;
 }
 
+.navItem:hover {
+    background-color: #ffffff;
+    color: #EEA200;
+}
+
 .btn {
     margin: 5px;
 }

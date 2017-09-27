@@ -24,9 +24,9 @@ class Profile extends React.Component{
 		let languages = [];
 		
 		if (this.props.data.genres || this.props.data.spoken_languages) {
-			this.props.data.genres.forEach((genre) => {
+			this.props.data.genres ? this.props.data.genres.forEach((genre) => {
 				genres.push(genre.name+' / ')
-			});
+			}) : genres = [];
 			this.props.data.spoken_languages ? this.props.data.spoken_languages.forEach((language) => {
 				languages.push(language.name+' , ');
 			}) : this.props.data.languages.forEach((language) => {

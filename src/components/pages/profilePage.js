@@ -15,12 +15,39 @@ class Profile extends React.Component{
 		this.props.fetchProfile(url);
 	}
 
-	render () {
-		console.log(this);
+	getImage = (imagePath) => {
+		return `https://image.tmdb.org/t/p/w300${imagePath}`
+	}
+
+	render () {	
+		let genres = [];
+		let languages = [];
+		if (this.props.data.genres || this.props.data.spoken_languages) {
+			this.props.data.genres.forEach((genre) => {
+				genres.push(genre.name+' / ')
+			});
+			this.props.data.spoken_languages.forEach((language) => {
+				languages.push(language.name+' , ');
+			});
+		}
 		return (
-			<div>
-				<h1>Profile Details for {this.props.data.id}</h1>
+			<section>
+			<div className="profile-page">
+				<div className="profile-header">
+					<img className="profile-image" src={this.getImage(this.props.data.backdrop_path)} />
+					<h1 className="profile-title">{this.props.data.title}</h1>
+					<p className="profile-genre">{genres}</p>
+					<i className="glyphicon glyphicon-heart profile-vote">{this.props.data.vote_average}/10</i>
+					<i className="glyphicon glyphicon-user profile-votecount">{this.props.data.vote_count}</i>
+				</div>
+				<div className="profile-details">
+					<p className="profile-language">Languages:  {languages}</p>
+					<p className="profile-budget">Budget:  ${this.props.data.budget}</p>
+					<p className="profile-tagline">Tagline:  {this.props.data.tagline}</p>
+					<p className="profile-summary">{this.props.data.overview}</p>
+				</div>
 			</div>
+			</section>
 		)
 	}
 }

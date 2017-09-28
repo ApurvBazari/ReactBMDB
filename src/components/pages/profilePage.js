@@ -16,26 +16,36 @@ class Profile extends React.Component{
 	}
 
 	getImage = (imagePath) => {
-		return `https://image.tmdb.org/t/p/w300${imagePath}`
+		return `https://image.tmdb.org/t/p/w300/${imagePath}`
 	}
 
 	render () {	
 		let genres = [];
-		let languages = [];
+		let languages = [];		
 		if (this.props.data.genres || this.props.data.spoken_languages) {
-			this.props.data.genres.forEach((genre) => {
+			this.props.data.genres ? this.props.data.genres.forEach((genre) => {
 				genres.push(genre.name+' / ')
-			});
-			this.props.data.spoken_languages.forEach((language) => {
+			}) : genres = [];
+			this.props.data.spoken_languages ? this.props.data.spoken_languages.forEach((language) => {
 				languages.push(language.name+' , ');
-			});
+			}) : this.props.data.languages.forEach((language) => {
+				languages.push(language.name+ ' , ');
+			})
 		}
+
+		let BackgroundImage = this.getImage(this.props.data.poster_path);
+
+		let sectionStyle = {
+			backgroundImage: `url(${BackgroundImage})`,
+			height: '1000px'
+		}
+
 		return (
-			<section>
+			<section style = {sectionStyle} className="profileBackground">
 			<div className="profile-page">
 				<div className="profile-header">
 					<img className="profile-image" src={this.getImage(this.props.data.backdrop_path)} />
-					<h1 className="profile-title">{this.props.data.title}</h1>
+					<h1 className="profile-title">{this.props.data.title || this.props.data.name}</h1>
 					<p className="profile-genre">{genres}</p>
 					<i className="glyphicon glyphicon-heart profile-vote">{this.props.data.vote_average}/10</i>
 					<i className="glyphicon glyphicon-user profile-votecount">{this.props.data.vote_count}</i>

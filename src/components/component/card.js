@@ -40,9 +40,7 @@ class Card extends React.Component {
     }
     return (
       <div className="movieCard">
-        <Link to={`/${this.props.data.title ? 'movie': 'tv'}/details/id=${this.props.data.id}`}>
-          <img className="movieImage" alt={this.props.data.title ? this.props.data.title : this.props.data.name} src={this.getImage(this.props.data.poster_path)} />
-        </Link>
+        <img className="movieImage" alt={this.props.data.title ? this.props.data.title : this.props.data.name} src={this.getImage(this.props.data.poster_path)} />
         <div className="imageTitle">
           <p className="language">{this.props.data.original_language}</p>
           <p className="title">{this.props.data.title ? this.props.data.title : this.props.data.name}</p>
@@ -58,6 +56,9 @@ class Card extends React.Component {
             <i className="vote_count">{this.props.data.vote_count}</i>
           </div>
         </div>
+        <Link to={`/${this.props.data.title ? 'movie': 'tv'}/details/id=${this.props.data.id}`}>
+          <div className="overlay"></div>
+        </Link>
       </div>
     );
   }

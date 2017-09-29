@@ -1,9 +1,9 @@
 import React from 'react'
-import Card from './card.js'
+import {Grid, Row, Col} from 'react-bootstrap'
 
 class Carousel extends React.Component {
-	fetchImage = (url) => {
-
+	fetchImage = (imagePath) => {
+		return `https://image.tmdb.org/t/p/w300/${imagePath}`;
 	}
 
 	render () {
@@ -12,25 +12,31 @@ class Carousel extends React.Component {
 		let cards = [];
 		if (data) {
 			data.forEach((data, i) => {
-				cards.push(<Card className="carousel-card" data={data} key={i} />)
+				let title = data.original_title ? data.original_title : data.name;
+				cards.push(
+					<div className="carouselCard">
+						<img className="carouselCard-image" src={this.fetchImage(data.profile_path || data.backdrop_path)} />
+						<p className="carouselCard-title">{title}</p>
+					</div>
+				)			
 			});
 		}
 		return (
-			<div className="carousel">
+			<Grid className="carousel">
 				<h1>{this.props.title} {this.props.type}s</h1>
 				<p>{this.props.similar}</p>
-				<ul className="panes">
-					<li className="cards">
+				<Col className="panes">
+					<Row className="carouselCards">
 						{cards}
-					</li>
-					<div className="carousel-control">
+					</Row>
+					<Row className="carousel-control">
 						<i className="glyphicon glyphicon-chevron-left"></i>
-        			</div>
-        			<div className="carousel-control">
+        			</Row>
+        			<Row className="carousel-control">
         				<i className="glyphicon glyphicon-chevron-right"></i>
-					</div>
-				</ul>	
-			</div>
+					</Row>
+				</Col>	
+			</Grid>
 		)
 	}
 }

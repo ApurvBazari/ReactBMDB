@@ -171,7 +171,7 @@
 .panes {
     position: relative;
     overflow: hidden;
-    width: 1000px;
+    width: 100%;
     height:300px;
     -moz-animation:carousel 30s infinite;
     -webkit-animation:carousel 30s infinite;
@@ -210,4 +210,16 @@
     right: 20px;
     width: 400px;
     height: 300px;
+}
+
+.carouselCard {
+    position: relative;
+    width: 20%;
+    height: 300px;
+    display: -webkit-inline-box;
+}
+
+.carouselCard-image {
+    width: 100%;
+    height: 100%;
 }

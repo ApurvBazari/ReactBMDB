@@ -17,7 +17,7 @@ class Card extends React.Component {
   }
 
   getImage = (imagePath) => {
-    return `https://image.tmdb.org/t/p/w300${imagePath}`;
+    return `https://image.tmdb.org/t/p/w300/${imagePath}`;
   }
 
   addFavourite = () => {

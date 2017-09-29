@@ -26,9 +26,9 @@ class Carousel extends React.Component {
 				<h1>{this.props.title} {this.props.type}s</h1>
 				<p>{this.props.similar}</p>
 				<Col className="panes">
-					<Row className="carouselCards">
+					<Col className="carouselCards">
 						{cards}
-					</Row>
+					</Col>
 					<Row className="carousel-control">
 						<i className="glyphicon glyphicon-chevron-left"></i>
         			</Row>

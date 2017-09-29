@@ -45,9 +45,7 @@ class Profile extends React.Component{
 			}) : genres = [];
 			this.props.data.spoken_languages ? this.props.data.spoken_languages.forEach((language) => {
 				languages.push(language.name+' , ');
-			}) : this.props.data.languages.forEach((language) => {
-				languages.push(language.name+ ' , ');
-			})
+			}) : languages = [];
 		}
 
 		let BackgroundImage = this.getImage(this.props.data.poster_path);

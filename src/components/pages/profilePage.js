@@ -11,6 +11,8 @@ import {fetchVideos} from '../../actions/fetchVideos.js'
 import {fetchSimilar} from '../../actions/fetchSimilar.js'
 import {fetchRecommendation} from '../../actions/fetchRecommendations.js'
 
+import Carousel from '../component/carousel.js'
+
 class Profile extends React.Component{
 	componentWillMount = () => {
 		console.log(this.props.match.params.value);
@@ -55,7 +57,7 @@ class Profile extends React.Component{
 		}
 
 		return (
-			<section style = {sectionStyle} className="profileBackground">
+			<section className="profileBackground">
 			<div className="profile-page">
 				<div className="profile-header">
 					<img className="profile-image" src={this.getImage(this.props.data.backdrop_path)} />
@@ -70,8 +72,8 @@ class Profile extends React.Component{
 					<p className="profile-tagline">Tagline:  {this.props.data.tagline}</p>
 					<p className="profile-summary">{this.props.data.overview}</p>
 				</div>
-				<div className="credit-details">
-					
+				<div className="similar-profiles">
+					<Carousel data={this.props.similar} title="Similar" type={this.props.match.params.type} />
 				</div>
 			</div>
 			</section>

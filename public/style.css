@@ -83,10 +83,6 @@
     transition: transform 0.5s ease;
 }
 
-.fa>fa-heart>fa-heart-like {
-    color: red;
-}
-
 .language {
     font-size: 14px;
     font-variant: small-caps
@@ -159,8 +155,43 @@
 }
 
 .profileBackground {
-    background-image: linear-gradient(to right, black 0%, white 100%);
-    background-size: 800px 600px;
+    background-image: linear-gradient(to left, black 0%, white 100%);
     background-repeat: no-repeat;
     background-color: #cccccc;
+}
+
+.carousel {
+    overflow: hidden;
+    width: 100%;
+}
+
+.panes {
+    position: relative;
+    overflow: hidden;
+    width: 500%;
+    -moz-animation:carousel 30s infinite;
+    -webkit-animation:carousel 30s infinite;
+    animation:carousel 30s infinite;
+}
+
+.panes > li {
+    position: relative;
+    float: left;
+}
+
+.carousel-control{
+    background-image: none;
+    float: left;
+}    
+
+.carousel-control .glyphicon-chevron-right {
+    position: absolute;
+    right: 0px;
+    background-image: none;
+}
+
+.carousel-control .glyphicon-chevron-left {
+    position: absolute;
+    left: 30px;
+    background-image: none;
 }

@@ -5,14 +5,23 @@ import {connect} from 'react-redux'
 import {bindActionCreators} from 'redux'
 
 import {itemsFetchData} from '../../actions/fetchItems.js'
+import {creditsFetchData} from '../../actions/fetchCredits.js'
+import {fetchImages} from '../../actions/fetchImages.js'
+import {fetchVideos} from '../../actions/fetchVideos.js'
 
 class Profile extends React.Component{
 	componentWillMount = () => {
 		console.log(this.props.match.params.value);
 		let id = this.props.match.params.valueId;
 		let type = this.props.match.params.type;
-		let url = `https://api.themoviedb.org/3/${type}/${id}?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US`;
-		this.props.fetchProfile(url);
+		let profileUrl = `https://api.themoviedb.org/3/${type}/${id}?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US`;
+		this.props.fetchProfile(profileUrl);
+		let creditsUrl = `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=d115fba9257637e7caf1dbc7a75a11d6`;
+		this.props.fetchCredits(creditsUrl);
+		let imageUrl = `https://api.themoviedb.org/3/${type}/${id}/images?api_key=d115fba9257637e7caf1dbc7a75a11d6`;
+		this.props.fetchImages(imageUrl);
+		let videosUrl = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=d115fba9257637e7caf1dbc7a75a11d6`;
+		this.props.fetchVideos(videosUrl);
 	}
 
 	getImage = (imagePath) => {
@@ -37,7 +46,6 @@ class Profile extends React.Component{
 
 		let sectionStyle = {
 			backgroundImage: `url(${BackgroundImage})`,
-			height: '1000px'
 		}
 
 		return (
@@ -56,6 +64,9 @@ class Profile extends React.Component{
 					<p className="profile-tagline">Tagline:  {this.props.data.tagline}</p>
 					<p className="profile-summary">{this.props.data.overview}</p>
 				</div>
+				<div className="credit-details">
+					
+				</div>
 			</div>
 			</section>
 		)
@@ -64,13 +75,21 @@ class Profile extends React.Component{
 
 const mapStateToProps = (state) => {
 	return {
-		data: state.items
+		data: state.items,
+		cast: state.credits.cast,
+		crew: state.credits.crew,
+		images: state.images,
+		poster: state.images.posters ? state.images.posters[0] : undefined,
+		videos: state.videos
 	}
 }
 
 const mapDispatchToProps = (dispatch) => {
 	return {
-		fetchProfile: bindActionCreators(itemsFetchData, dispatch)
+		fetchProfile: bindActionCreators(itemsFetchData, dispatch),
+		fetchCredits: bindActionCreators(creditsFetchData, dispatch),
+		fetchImages: bindActionCreators(fetchImages, dispatch),
+		fetchVideos: bindActionCreators(fetchVideos, dispatch)
 	}
 }
 

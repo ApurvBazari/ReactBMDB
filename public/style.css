@@ -8,6 +8,7 @@
     -webkit-transition: -webkit-transform 0.5s ease;
     -moz-transition: -moz-transform 0.5s ease;
     transition: transform 0.5s ease;
+    box-shadow: 10px 10px 5px grey;
 }
 
 .movieImage {
@@ -148,10 +149,6 @@
     color: white;
 }
 
-.profileBackground {
-    background-size: cover;
-}
-
 .overlay {
     position: absolute;
     width: 100%;
@@ -159,4 +156,11 @@
     top: 0px;
     left: 0px;
     background-color: rgba(0,0,0,0.3);
+}
+
+.profileBackground {
+    background-image: linear-gradient(to right, black 0%, white 100%);
+    background-size: 800px 600px;
+    background-repeat: no-repeat;
+    background-color: #cccccc;
 }

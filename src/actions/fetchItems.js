@@ -24,10 +24,10 @@ export const itemsFetchDataSuccess = (items) => dispatch => {
 }
 
 export const itemsFetchData = (url) => dispatch => {
-        dispatch(itemsIsLoading(true));
+        dispatch(itemsIsLoading(true))
         return fetch(url)
             .then((response) => {
-                dispatch(itemsIsLoading(false));
+                dispatch(itemsIsLoading(false))
                 if (!response.ok) {
                     throw Error(response.statusText);
                 }

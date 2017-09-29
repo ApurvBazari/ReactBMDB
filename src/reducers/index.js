@@ -7,6 +7,8 @@ import {addFavourite} from './addFavourites.js'
 import {creditsHasErrored, creditsIsLoading, creditsFetchSuccess} from './fetchCredits.js'
 import {imagesHasErrored, imagesIsLoading, imagesFetchSuccess} from './fetchImages.js'
 import {videosHasErrored, videosIsLoading, videosFetchSuccess} from './fetchVideos.js'
+import {similarHasErrored, similarIsLoading, similarFetchSuccess} from './fetchSimilar.js'
+import {recommendationHasErrored, recommendationIsLoading, recommendationFetchSuccess} from './fetchRecommendation.js'
 
 export default combineReducers({
 	items: itemsFetchSuccess,
@@ -21,5 +23,11 @@ export default combineReducers({
 	imagesHasErrored,
 	videos: videosFetchSuccess,
 	videosIsLoading,
-	videosHasErrored
+	videosHasErrored,
+	similar: similarFetchSuccess,
+	similarIsLoading,
+	similarHasErrored,
+	recommendations: recommendationFetchSuccess,
+	recommendationIsLoading,
+	recommendationHasErrored
 });

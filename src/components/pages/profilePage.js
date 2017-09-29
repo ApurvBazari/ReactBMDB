@@ -8,6 +8,8 @@ import {itemsFetchData} from '../../actions/fetchItems.js'
 import {creditsFetchData} from '../../actions/fetchCredits.js'
 import {fetchImages} from '../../actions/fetchImages.js'
 import {fetchVideos} from '../../actions/fetchVideos.js'
+import {fetchSimilar} from '../../actions/fetchSimilar.js'
+import {fetchRecommendation} from '../../actions/fetchRecommendations.js'
 
 class Profile extends React.Component{
 	componentWillMount = () => {
@@ -22,6 +24,10 @@ class Profile extends React.Component{
 		this.props.fetchImages(imageUrl);
 		let videosUrl = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=d115fba9257637e7caf1dbc7a75a11d6`;
 		this.props.fetchVideos(videosUrl);
+		let similarUrl = `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1`;
+		this.props.fetchSimilar(similarUrl);
+		let recommendationsUrl = `https://api.themoviedb.org/3/${type}/${id}/recommendations?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1`;
+		this.props.fetchRecommendation(recommendationsUrl);
 	}
 
 	getImage = (imagePath) => {
@@ -80,7 +86,9 @@ const mapStateToProps = (state) => {
 		crew: state.credits.crew,
 		images: state.images,
 		poster: state.images.posters ? state.images.posters[0] : undefined,
-		videos: state.videos
+		videos: state.videos.results,
+		similar: state.similar.results,
+		recommendations: state.recommendations
 	}
 }
 
@@ -89,7 +97,9 @@ const mapDispatchToProps = (dispatch) => {
 		fetchProfile: bindActionCreators(itemsFetchData, dispatch),
 		fetchCredits: bindActionCreators(creditsFetchData, dispatch),
 		fetchImages: bindActionCreators(fetchImages, dispatch),
-		fetchVideos: bindActionCreators(fetchVideos, dispatch)
+		fetchVideos: bindActionCreators(fetchVideos, dispatch),
+		fetchSimilar: bindActionCreators(fetchSimilar, dispatch),
+		fetchRecommendation: bindActionCreators(fetchRecommendation, dispatch)
 	}
 }
 

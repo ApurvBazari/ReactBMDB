@@ -19,16 +19,16 @@ class Profile extends React.Component{
 		let id = this.props.match.params.valueId;
 		let type = this.props.match.params.type;
 		let profileUrl = `https://api.themoviedb.org/3/${type}/${id}?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US`;
-		this.props.fetchProfile(profileUrl);
 		let creditsUrl = `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=d115fba9257637e7caf1dbc7a75a11d6`;
-		this.props.fetchCredits(creditsUrl);
 		let imageUrl = `https://api.themoviedb.org/3/${type}/${id}/images?api_key=d115fba9257637e7caf1dbc7a75a11d6`;
-		this.props.fetchImages(imageUrl);
 		let videosUrl = `https://api.themoviedb.org/3/${type}/${id}/videos?api_key=d115fba9257637e7caf1dbc7a75a11d6`;
-		this.props.fetchVideos(videosUrl);
 		let similarUrl = `https://api.themoviedb.org/3/${type}/${id}/similar?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1`;
-		this.props.fetchSimilar(similarUrl);
 		let recommendationsUrl = `https://api.themoviedb.org/3/${type}/${id}/recommendations?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US&page=1`;
+		this.props.fetchSimilar(similarUrl);
+		this.props.fetchVideos(videosUrl);
+		this.props.fetchImages(imageUrl);
+		this.props.fetchCredits(creditsUrl);
+		this.props.fetchProfile(profileUrl);
 		this.props.fetchRecommendation(recommendationsUrl);
 	}
 

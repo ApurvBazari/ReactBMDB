@@ -128,6 +128,9 @@
     background: antiquewhite;
 }
 
+.navbar {
+    margin-bottom: 0px;
+}
 .navItem:hover {
     background-color: #ffffff;
     color: #EEA200;
@@ -196,4 +199,15 @@
     position: absolute;
     left: 30px;
     background-image: none;
+}
+
+.profile-details {
+    width: 60%;
+}
+
+.profile-image {
+    position: absolute;
+    right: 20px;
+    width: 400px;
+    height: 300px;
 }

@@ -72,6 +72,15 @@ class Profile extends React.Component{
 					<p className="profile-tagline">Tagline:  {this.props.data.tagline}</p>
 					<p className="profile-summary">{this.props.data.overview}</p>
 				</div>
+				<div className="profile-cast">
+					<Carousel data={this.props.cast} title="Cast" />
+				</div>
+				<div className="profile-trailers">
+					<Carousel data={this.props.videos} title="Trailer" />
+				</div>
+				<div className="profile-recommendations">
+					<Carousel data={this.props.recommendations} title="Recommendation" type={this.props.match.params.type} />
+				</div>
 				<div className="similar-profiles">
 					<Carousel data={this.props.similar} title="Similar" type={this.props.match.params.type} />
 				</div>
@@ -90,7 +99,7 @@ const mapStateToProps = (state) => {
 		poster: state.images.posters ? state.images.posters[0] : undefined,
 		videos: state.videos.results,
 		similar: state.similar.results,
-		recommendations: state.recommendations
+		recommendations: state.recommendations.results
 	}
 }
 

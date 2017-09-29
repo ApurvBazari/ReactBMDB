@@ -12,7 +12,7 @@ class Carousel extends React.Component {
 		let cards = [];
 		if (data) {
 			data.forEach((data, i) => {
-				cards.push(<Card data={data} key={i} />)
+				cards.push(<Card className="carousel-card" data={data} key={i} />)
 			});
 		}
 		return (
@@ -20,11 +20,13 @@ class Carousel extends React.Component {
 				<h1>{this.props.title} {this.props.type}s</h1>
 				<p>{this.props.similar}</p>
 				<ul className="panes">
-					<li>
+					<li className="cards">
 						{cards}
 					</li>
 					<div className="carousel-control">
 						<i className="glyphicon glyphicon-chevron-left"></i>
+        			</div>
+        			<div className="carousel-control">
         				<i className="glyphicon glyphicon-chevron-right"></i>
 					</div>
 				</ul>	

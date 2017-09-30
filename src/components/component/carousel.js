@@ -1,5 +1,6 @@
 import React from 'react'
 import {Grid, Row, Col} from 'react-bootstrap'
+import {Link} from 'react-router-dom'
 
 class Carousel extends React.Component {
 	fetchImage = (imagePath) => {
@@ -27,7 +28,9 @@ class Carousel extends React.Component {
 				} else {
 					cards.push(
 						<div className="item" key={i}>
+						<Link to={`/${data.title ? 'movie': 'tv'}/details/id=${data.id}`}>
 							<img className="item-image" src={this.fetchImage(data.profile_path || data.backdrop_path)} />
+						</Link>
 							<p className="item-title">{title}{titleSuffix}</p>
 						</div>
 					)

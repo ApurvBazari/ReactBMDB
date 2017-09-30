@@ -2,6 +2,7 @@
 
 import React from 'react'
 import {connect} from 'react-redux'
+import {withRouter} from 'react-router'
 import {bindActionCreators} from 'redux'
 
 import {itemsFetchData} from '../../actions/fetchItems.js'
@@ -14,10 +15,9 @@ import {fetchRecommendation} from '../../actions/fetchRecommendations.js'
 import Carousel from '../component/carousel.js'
 
 class Profile extends React.Component{
-	componentWillMount = () => {
-		console.log(this.props.match.params.value);
-		let id = this.props.match.params.valueId;
-		let type = this.props.match.params.type;
+	fetchProfile = () => {
+		let id = this.props.id;
+		let type = this.props.type;
 		let profileUrl = `https://api.themoviedb.org/3/${type}/${id}?api_key=d115fba9257637e7caf1dbc7a75a11d6&language=en-US`;
 		let creditsUrl = `https://api.themoviedb.org/3/${type}/${id}/credits?api_key=d115fba9257637e7caf1dbc7a75a11d6`;
 		let imageUrl = `https://api.themoviedb.org/3/${type}/${id}/images?api_key=d115fba9257637e7caf1dbc7a75a11d6`;
@@ -30,6 +30,19 @@ class Profile extends React.Component{
 		this.props.fetchCredits(creditsUrl);
 		this.props.fetchProfile(profileUrl);
 		this.props.fetchRecommendation(recommendationsUrl);
+	}
+
+	componentDidMount = () => {
+		//console.log(this.props.match.params.value);
+		this.fetchProfile();		
+	}
+
+	componentWillUpdate = (prevProps) => {
+		if (prevProps.id !== this.props.match.params.valueId || prevProps.type !== this.props.match.params.type) {
+			this.fetchProfile();
+		} else {
+			return false;
+		}
 	}
 
 	getImage = (imagePath) => {
@@ -88,8 +101,10 @@ class Profile extends React.Component{
 	}
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
 	return {
+		id: ownProps.match.params.valueId,
+		type: ownProps.match.params.type,
 		data: state.items,
 		cast: state.credits.cast,
 		crew: state.credits.crew,
@@ -112,4 +127,4 @@ const mapDispatchToProps = (dispatch) => {
 	}
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Profile);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Profile));

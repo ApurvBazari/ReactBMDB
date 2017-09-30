@@ -16,18 +16,19 @@ class Carousel extends React.Component {
 		if (data) {
 			data.forEach((data, i) => {
 				let title = data.original_title ? data.original_title : data.name;
+				let titleSuffix = data.character ? ` as ${data.character}` : '';
 				if (data.type === 'Trailer') {
 					cards.push (
 						<div className="item" key={i}>
-							<iframe className="item-image" src={this.fetchVideo(data.key)} />
-							<p className="item-title">{title}</p>
+							<iframe className="item-videos" src={this.fetchVideo(data.key)} />
+							<p className="item-title">{title}{titleSuffix}</p>
 						</div>
 					)
 				} else {
 					cards.push(
 						<div className="item" key={i}>
 							<img className="item-image" src={this.fetchImage(data.profile_path || data.backdrop_path)} />
-							<p className="item-title">{title}</p>
+							<p className="item-title">{title}{titleSuffix}</p>
 						</div>
 					)
 				}			

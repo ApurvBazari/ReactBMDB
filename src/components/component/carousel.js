@@ -5,6 +5,10 @@ class Carousel extends React.Component {
 	fetchImage = (imagePath) => {
 		return `https://image.tmdb.org/t/p/w300/${imagePath}`;
 	}
+	
+	fetchVideo = (videoKey) => {
+		return `https://www.youtube.com/embed/${videoKey}`;
+	}
 
 	render () {
 		let data = this.props.data;
@@ -12,12 +16,21 @@ class Carousel extends React.Component {
 		if (data) {
 			data.forEach((data, i) => {
 				let title = data.original_title ? data.original_title : data.name;
-				cards.push(
-					<div className="item" key={i}>
-						<img className="item-image" src={this.fetchImage(data.profile_path || data.backdrop_path)} />
-						<p className="item-title">{title}</p>
-					</div>
-				)			
+				if (data.type === 'Trailer') {
+					cards.push (
+						<div className="item" key={i}>
+							<iframe className="item-image" src={this.fetchVideo(data.key)} />
+							<p className="item-title">{title}</p>
+						</div>
+					)
+				} else {
+					cards.push(
+						<div className="item" key={i}>
+							<img className="item-image" src={this.fetchImage(data.profile_path || data.backdrop_path)} />
+							<p className="item-title">{title}</p>
+						</div>
+					)
+				}			
 			});
 		}
 		return (

@@ -71,7 +71,7 @@ class Profile extends React.Component{
 			<section style={sectionStyle} className="profileBackground">
 			<div className="profile-page">
 				<div className="profile-header">
-					<img className="profile-image" src={this.getImage(this.props.images ? this.props.images.file_path : this.props.data.poster_path)} />
+					<img className="profile-image" src={this.getImage(this.props.data.poster_path)} />
 					<h1 className="profile-title">{this.props.data.title || this.props.data.name}</h1>
 					<p className="profile-genre">{genres}</p>
 					<i className="glyphicon glyphicon-heart profile-vote">{this.props.data.vote_average}/10</i>

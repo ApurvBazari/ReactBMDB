@@ -29,7 +29,7 @@ class Carousel extends React.Component {
 					cards.push(
 						<div className="item" key={i}>
 						<Link to={`/${data.title ? 'movie': 'tv'}/details/id=${data.id}`}>
-							<img className="item-image" src={this.fetchImage(data.profile_path || data.backdrop_path)} />
+							<img className="item-image" src={this.fetchImage(data.poster_path || data.backdrop_path || data.profile_path)} />
 						</Link>
 							<p className="item-title">{title}{titleSuffix}</p>
 						</div>

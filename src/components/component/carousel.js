@@ -28,12 +28,6 @@ class Carousel extends React.Component {
 					<div className="items">
 						{cards}
 					</div>
-					<a className="carousel-control left" href="#myCarousel" data-slide="prev">
-						<i className="glyphicon glyphicon-chevron-left"></i>
-					</a>
-					<a href="#myCarousel " className="carousel-control right" data-slide="next">
-        				<i className="glyphicon glyphicon-chevron-right"></i>
-					</a>
 				</div>
 				</div>
 		)

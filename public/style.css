@@ -159,9 +159,10 @@
 }
 
 .profileBackground {
-    background-image: linear-gradient(to left, black 0%, white 100%);
     background-repeat: no-repeat;
     background-color: #cccccc;
+    background-size: contain;
+    background-blend-mode: soft-light;
 }
 
 .carousel {

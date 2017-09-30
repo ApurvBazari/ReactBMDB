@@ -61,17 +61,17 @@ class Profile extends React.Component{
 			}) : languages = [];
 		}
 
-		let BackgroundImage = this.getImage(this.props.data.poster_path);
+		let BackgroundImage = this.getImage(this.props.data.backdrop_path);
 
 		let sectionStyle = {
-			backgroundImage: `url(${BackgroundImage})`,
+			backgroundImage: `url(${BackgroundImage}), linear-gradient(to left, black 0%, white 100%)`,
 		}
 
 		return (
-			<section className="profileBackground">
+			<section style={sectionStyle} className="profileBackground">
 			<div className="profile-page">
 				<div className="profile-header">
-					<img className="profile-image" src={this.getImage(this.props.data.backdrop_path)} />
+					<img className="profile-image" src={this.getImage(this.props.images ? this.props.images.file_path : this.props.data.poster_path)} />
 					<h1 className="profile-title">{this.props.data.title || this.props.data.name}</h1>
 					<p className="profile-genre">{genres}</p>
 					<i className="glyphicon glyphicon-heart profile-vote">{this.props.data.vote_average}/10</i>
@@ -108,8 +108,8 @@ const mapStateToProps = (state, ownProps) => {
 		data: state.items,
 		cast: state.credits.cast,
 		crew: state.credits.crew,
-		images: state.images,
-		poster: state.images.posters ? state.images.posters[0] : undefined,
+		images: state.images.poster ? state.images.poster[0] : undefined,
+		poster: state.images.backdrops ? state.images.backdrops[0] : undefined,
 		videos: state.videos.results,
 		similar: state.similar.results,
 		recommendations: state.recommendations.results

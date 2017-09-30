@@ -13,16 +13,16 @@ class Carousel extends React.Component {
 			data.forEach((data, i) => {
 				let title = data.original_title ? data.original_title : data.name;
 				cards.push(
-					<div className="carouselCard" key={i}>
-						<img className="carouselCard-image" src={this.fetchImage(data.profile_path || data.backdrop_path)} />
-						<p className="carouselCard-title">{title}</p>
+					<div className="item" key={i}>
+						<img className="item-image" src={this.fetchImage(data.profile_path || data.backdrop_path)} />
+						<p className="item-title">{title}</p>
 					</div>
 				)			
 			});
 		}
 		return (
 				<div id="myCarousel" className="carousel slide">
-				<h1>{this.props.title} {this.props.type}s</h1>
+				<h1 className="carousel-header">{this.props.title} {this.props.type}s</h1>
 				<p>{this.props.similar}</p>
 				<div className="carousel-inner">
 					<div className="items">
